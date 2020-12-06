@@ -1,7 +1,12 @@
 //------Teriq's code begins here ----------
 
 async function getInfo(link){
-  const response = await fetch("expanded_issues.php?title='"+link+"'");
+  const response = await fetch("expanded_issues.php?title='"+link+"'",{
+    method: 'GET',
+    headers: {
+      'Content-Type':'application/json'
+    }
+  });
   if(response.ok){
     var issues = await response.json();
     return issues;
@@ -72,7 +77,7 @@ function button() {
 
 //-------Teriq's Code ---------
 
-function pageSetup(){
+async function pageSetup(){
   function linkSetup(jso){
     var page = document.getElementsByClassName("mainbar")[0];
     var jso = jso;
